@@ -1,4 +1,5 @@
 {
+  "browser": true,
   "node": true,
   "esnext": true,
   "bitwise": true,
@@ -13,5 +14,6 @@
   "quotmark": "single",
   "undef": true,
   "unused": true,
-  "strict": true
+  "strict": true,
+  "jquery": true
 }
