@@ -13,16 +13,22 @@ module.exports = yeoman.generators.Base.extend({
     ));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      type: 'checkbox',
+      name: 'features',
+      message: 'What more would you like?',
+      choices: [{
+       name: 'Documentation',
+       value: 'includeDoc',
+       checked: false
+     }]
     }];
 
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
+    this.prompt(prompts, function (answers) {
+      var features = answers.features;
 
+      function hasFeature(feat) { return features.indexOf(feat) !== -1; }
+
+      this.includeDoc = hasFeature('includeDoc');
       done();
     }.bind(this));
   },
@@ -75,11 +81,11 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('images.js'),
         this.destinationPath('tasks/images.js')
-      );
-      this.fs.copy(
-        this.templatePath('package.js'),
-        this.destinationPath('tasks/package.js')
-      );
+      );      
+       this.fs.copy(
+         this.templatePath('package.js'),
+         this.destinationPath('tasks/package.js')
+       ); 
       this.fs.copy(
         this.templatePath('scripts.js'),
         this.destinationPath('tasks/scripts.js')
@@ -106,10 +112,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('index.html'),
         this.destinationPath('app/index.html')
       );
-      this.fs.copy(
-        this.templatePath('tech-placeholder.jpeg'),
-        this.destinationPath('app/image-placeholders/tech-placeholder.jpeg')
-      );
+        this.fs.copy(
+          this.templatePath('tech-placeholder.jpeg'),
+          this.destinationPath('app/image-placeholders/tech-placeholder.jpeg')
+        );
       this.fs.copy(
         this.templatePath('tech.jpeg'),
         this.destinationPath('app/images/tech.jpeg')
@@ -139,11 +145,13 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('app/vendor.scss')
       );
     },
-    documentation : function() { 
-      this.fs.copy(
-        this.templatePath('documentation.html'),
-        this.destinationPath('documentation/documentation.html')
-      );
+    documentation : function() {
+      if (this.includeDoc) {
+        this.fs.copy(
+          this.templatePath('documentation.html'),
+          this.destinationPath('documentation/documentation.html')
+        );
+      }       
     }
   },
 
