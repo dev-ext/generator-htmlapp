@@ -20,7 +20,11 @@ module.exports = yeoman.generators.Base.extend({
        name: 'Documentation',
        value: 'includeDoc',
        checked: false
-     }]
+     }, {
+      name: 'Advanced task for theme sale',
+      value: 'includePkg',
+      checked: false
+    }]
     }];
 
     this.prompt(prompts, function (answers) {
@@ -29,6 +33,8 @@ module.exports = yeoman.generators.Base.extend({
       function hasFeature(feat) { return features.indexOf(feat) !== -1; }
 
       this.includeDoc = hasFeature('includeDoc');
+      this.includePkg = hasFeature('includePkg');
+
       done();
     }.bind(this));
   },
@@ -74,18 +80,17 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('assets.js'),
         this.destinationPath('tasks/assets.js')
       );
-      this.fs.copy(
-        this.templatePath('config.json'),
-        this.destinationPath('tasks/config.json')
-      );
+      
       this.fs.copy(
         this.templatePath('images.js'),
         this.destinationPath('tasks/images.js')
-      );      
+      );
+      if (this.includePkg) {
        this.fs.copy(
          this.templatePath('package.js'),
          this.destinationPath('tasks/package.js')
-       ); 
+       );
+      } 
       this.fs.copy(
         this.templatePath('scripts.js'),
         this.destinationPath('tasks/scripts.js')
@@ -112,10 +117,12 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('index.html'),
         this.destinationPath('app/index.html')
       );
+      if (this.includePkg) {
         this.fs.copy(
           this.templatePath('tech-placeholder.jpeg'),
           this.destinationPath('app/image-placeholders/tech-placeholder.jpeg')
         );
+      }
       this.fs.copy(
         this.templatePath('tech.jpeg'),
         this.destinationPath('app/images/tech.jpeg')
@@ -152,6 +159,15 @@ module.exports = yeoman.generators.Base.extend({
           this.destinationPath('documentation/documentation.html')
         );
       }       
+    },
+    configJson : function() {
+      this.fs.copyTpl(
+        this.templatePath('config.json'),
+        this.destinationPath('tasks/config.json'),
+        {
+          includePkg: this.includePkg
+        }
+      );
     }
   },
 

@@ -20,7 +20,7 @@
     "d_styles":"dist/",
     "d_Vstyles":"dist/",
    
-
+    <% if (includePkg)  { %>
     "package": "main",
     "server": "server",
     "stack": "developer-task",
@@ -45,6 +45,7 @@
     "p_h_compile_js" :"",
     "p_h_compile_js_vendor" :"",
 
+    <% } %>
 
     "p_doc":"main/documentation/",
 
