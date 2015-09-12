@@ -5,25 +5,6 @@ Repo :
 Version : 0.1
 */
 
-// ------------------------------------
-//			Core 
-// ------------------------------------
-
-// Variables
-@import 'scss/base/variables';
-// Mixin
-@import 'scss/mixin/mixins';
-@import 'scss/base/base';
-
-
-// ------------------------------------
-//			Project Structure
-// ------------------------------------
-
-// module
-@import 'scss/components/components';
-// pages
-@import 'scss/page/pages';
 
 .header {
 	margin-bottom: 20px;
