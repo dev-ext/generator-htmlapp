@@ -1,2 +1,7 @@
+<% if (includeSCSSpkg) { %>
+	@import ('scss/base/variables');
+	@import ('scss/base/base');
+<% } %>
+
 // Bootstrap
 @import '../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss';

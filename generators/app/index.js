@@ -24,6 +24,11 @@ module.exports = yeoman.generators.Base.extend({
       name: 'Advanced task for theme sale',
       value: 'includePkg',
       checked: false
+    },
+    {
+      name: 'Create SCSS project structure',
+      value: 'includeSCSSpkg',
+      checked: false
     }]
     }];
 
@@ -34,6 +39,7 @@ module.exports = yeoman.generators.Base.extend({
 
       this.includeDoc = hasFeature('includeDoc');
       this.includePkg = hasFeature('includePkg');
+      this.includeSCSSpkg = hasFeature('includeSCSSpkg');
 
       done();
     }.bind(this));
@@ -150,6 +156,44 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('vendor.scss'),
         this.destinationPath('app/vendor.scss')
+      );
+    },
+    SCSSpackage : function() {
+      if (this.includeSCSSpkg) {
+        this.fs.copy(
+          this.templatePath('_base.scss'),
+          this.destinationPath('app/scss/base/_base.scss')
+        );
+        this.fs.copy(
+          this.templatePath('_variables.scss'),
+          this.destinationPath('app/scss/base/_variables.scss')
+        );
+        this.fs.copy(
+          this.templatePath('_components.scss'),
+          this.destinationPath('app/scss/components/_components.scss')
+        );
+        this.fs.copy(
+          this.templatePath('_mixins.scss'),
+          this.destinationPath('app/scss/mixin/_mixins.scss')
+        );
+        this.fs.copy(
+          this.templatePath('_pages.scss'),
+          this.destinationPath('app/scss/pages/_pages.scss')
+        );
+      }
+      this.fs.copyTpl(
+        this.templatePath('vendor.scss'),
+        this.destinationPath('app/vendor.scss'),
+        {
+          includeSCSSpkg: this.includeSCSSpkg
+        }
+      );
+      this.fs.copyTpl(
+        this.templatePath('style.scss'),
+        this.destinationPath('app/style.scss'),
+        {
+          includeSCSSpkg: this.includeSCSSpkg
+        }
       );
     },
     documentation : function() {
