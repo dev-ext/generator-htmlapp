@@ -102,10 +102,6 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('tasks/scripts.js')
       );
       this.fs.copy(
-        this.templatePath('serve.js'),
-        this.destinationPath('tasks/serve.js')
-      );
-      this.fs.copy(
         this.templatePath('styles.js'),
         this.destinationPath('tasks/styles.js')
       );
@@ -204,10 +200,17 @@ module.exports = yeoman.generators.Base.extend({
         );
       }       
     },
-    configJson : function() {
+    packageTask : function() {
       this.fs.copyTpl(
         this.templatePath('config.json'),
         this.destinationPath('tasks/config.json'),
+        {
+          includePkg: this.includePkg
+        }
+      );
+      this.fs.copyTpl(
+        this.templatePath('serve.js'),
+        this.destinationPath('tasks/serve.js'),
         {
           includePkg: this.includePkg
         }

@@ -55,6 +55,7 @@ gulp.task('serve:dist',function  () {
   });
 });
 
+<% if (includePkg)  { %>
 gulp.task('serve:server',function  () {
   browserSync({
     notify: false,
@@ -77,4 +78,5 @@ gulp.task('serve:client',function  () {
   });
 });
 
+<% } %>
 
