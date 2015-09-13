@@ -5,13 +5,13 @@
     
     "image_placeholder":"app/image-placeholders/",
     "images":"app/images/",
-    "compile_js" :"app/js/",
-    "compile_js_vendor" :"app/js/vendor/",
+    "compile_js" :".tmp/js/",
+    "compile_js_vendor" :".tmp/js/vendor/",
     "scripts" :"app/scripts/",
     "bowerfont":["bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.*"],
-    "fontpath" :"app/fonts/",
-    "compile_styles":"app/",
-    "compile_Vstyles":"app/",
+    "fontpath" :".tmp/fonts/",
+    "compile_styles":".tmp/",
+    "compile_Vstyles":".tmp/",
    
     "d_images":"dist/images/",
     "d_compile_js" :"dist/js/",

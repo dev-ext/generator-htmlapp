@@ -12,7 +12,7 @@ gulp.task('serve', ['styles','vendorStyles','headjs','mainjs','vendorjs','bowerf
     notify: false,
     port: 9000,
      server: {
-      baseDir: [config.app],      
+      baseDir: [config.app,'.tmp/'],      
       routes: {
         '/bower_components': 'bower_components'
       },

@@ -9,6 +9,7 @@ gulp.task('clean', function(){
     config.app+'/js',
     config.app+'/style.css',
     config.app+'/vendor.css',
+    config.temp,
     config.fontpath,
     config.package+'.zip'
     ])
