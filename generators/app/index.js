@@ -48,15 +48,10 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
         this.templatePath('_bower.json'),
         this.destinationPath('bower.json')
       );
     },
-
     stackfiles: function () {
       this.fs.copy(
         this.templatePath('editorconfig'),
@@ -200,7 +195,14 @@ module.exports = yeoman.generators.Base.extend({
         );
       }       
     },
-    packageTask : function() {
+    packageTask : function() {      
+      this.fs.copyTpl(
+        this.templatePath('_package.json'),
+        this.destinationPath('package.json'),
+        {
+          includePkg: this.includePkg
+        }
+      );
       this.fs.copyTpl(
         this.templatePath('config.json'),
         this.destinationPath('tasks/config.json'),
