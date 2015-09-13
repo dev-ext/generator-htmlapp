@@ -5,8 +5,8 @@ Repo :
 Version : 0.1
 */
 <% if (includeSCSSpkg) { %>
-	@import ('scss/base/variables');
-	@import ('scss/base/base');
+	@import 'scss/base/variables';
+	@import 'scss/base/base';
 <% } %>
 
 .header {
