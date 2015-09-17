@@ -7,7 +7,14 @@ var fs = require('fs');
 var config = require('./config.json');
 
 
-gulp.task('serve', ['styles','vendorStyles','headjs','mainjs','vendorjs','bowerfont'], function () {
+gulp.task('serve', ['styles','vendorStyles','headjs',
+  <% if (js_pre_none)  { %>
+  'mainjs',
+  <% } %>
+  <% if (js_pre_coffe)  { %>
+  'maincoffee',
+  <% } %>
+  'vendorjs','bowerfont'], function () {
   browserSync({
     notify: false,
     port: 9000,
@@ -40,8 +47,9 @@ gulp.task('serve', ['styles','vendorStyles','headjs','mainjs','vendorjs','bowerf
     config.compile_js+'**/*.js',
     config.images+'**/*',
   ]).on('change', reload);
-  gulp.watch(config.app+'/**/*.scss', ['styles','vendorStyles']);
-  gulp.watch(config.scripts+'**/*.js', ['mainjs']);
+  gulp.watch(config.app+'/**/*.scss', ['styles','vendorStyles']);<% if (js_pre_none)  { %>
+  gulp.watch(config.scripts+'**/*.js', ['mainjs']);<% } %><% if (js_pre_coffe)  { %>
+  gulp.watch(config.scripts+'**/*.coffee', ['maincoffee']);<% } %>
 });
 
 gulp.task('serve:dist',function  () {

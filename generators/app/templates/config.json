@@ -54,8 +54,9 @@
     "vendor_js": [
         "bower_components/jquery/dist/jquery.js",
         "bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"
-    ],
-    "mainjs": "app/scripts/main.js",
+    ],<% if (js_pre_none)  { %>
+    "mainjs": "app/scripts/main.js",<% } %><% if (js_pre_coffe)  { %>
+    "maincoffee": "app/scripts/main.coffee",<% } %>
     "styles_scss":"app/style.scss",
     "vendor_scss":"app/vendor.scss",
 

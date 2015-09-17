@@ -85,7 +85,14 @@ gulp.task('cp:doc',function(){
 gulp.task('cp', function() {
   runSequence(
             // Build
-            ['styles:b','vendorStyles:b','mainjs:b', 'headjs:b',
+            ['styles:b','vendorStyles:b',
+            <% if (js_pre_none)  { %>
+            'mainjs:b',
+            <% } %>
+            <% if (js_pre_coffe)  { %>
+            'maincoffee:b',
+            <% } %>
+            'headjs:b',
             'vendorjs:b','images','extras','htmlcopy:b'],
             // server upload for demo
             ['cp:server:dist'],

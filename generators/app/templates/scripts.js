@@ -4,6 +4,8 @@ var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var coffee = require('gulp-coffee');
+var gutil = require('gulp-util');
 var config = require('./config.json');
 
 
@@ -14,7 +16,7 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter("jshint-stylish"))
     .pipe(jshint.reporter('default'));
 });
-
+<% if (js_pre_none)  { %>
 // Main Js
 gulp.task('mainjs', function(){
   return gulp.src(config.mainjs)
@@ -33,7 +35,8 @@ gulp.task('mainjs:b', function(){
     .pipe(uglify())
     .pipe(gulp.dest(config.d_compile_js));
 });
-
+<% } %>
+<% if (js_pre_coffe)  { %>
 // Main coffee script 
 gulp.task('maincoffee', function(){
   return gulp.src(config.maincoffee)
@@ -41,7 +44,7 @@ gulp.task('maincoffee', function(){
     .pipe(jshint())
     .pipe(jshint.reporter("jshint-stylish"))
     .pipe(concat('main.js'))    
-    .pipe(gulp.dest(config.compile_maincoffe))
+    .pipe(gulp.dest(config.compile_js))
 });
 gulp.task('maincoffee:b', function(){
   return gulp.src(config.maincoffee)
@@ -54,7 +57,7 @@ gulp.task('maincoffee:b', function(){
     .pipe(uglify())
     .pipe(gulp.dest(config.d_compile_js));
 });
-
+<% } %>
 
 // Vendor js
 gulp.task('vendorjs', function(){
