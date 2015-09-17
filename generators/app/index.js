@@ -30,6 +30,11 @@ module.exports = yeoman.generators.Base.extend({
       value: 'includeSCSSpkg',
       checked: false
     }]
+    },{
+      type: "list",
+      name:'js_features',
+      message : 'Select Js preproccessor',
+      choices: [ "None", "CoffeScript"]
     }];
 
     this.prompt(prompts, function (answers) {
@@ -40,6 +45,12 @@ module.exports = yeoman.generators.Base.extend({
       this.includeDoc = hasFeature('includeDoc');
       this.includePkg = hasFeature('includePkg');
       this.includeSCSSpkg = hasFeature('includeSCSSpkg');
+
+      
+      var js_features = answers.js_features;
+
+      function jsFeature(feat) { return js_features.indexOf(feat) !== -1; }      
+      this.CoffeScript = jsFeature('CoffeScript');
 
       done();
     }.bind(this));
@@ -200,7 +211,8 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
         {
-          includePkg: this.includePkg
+          includePkg: this.includePkg,
+          CoffeScript : this.CoffeScript
         }
       );
       this.fs.copyTpl(
@@ -221,6 +233,6 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function () {
-    this.installDependencies();
+    //this.installDependencies();
   }
 });

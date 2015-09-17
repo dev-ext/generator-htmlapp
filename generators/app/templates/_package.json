@@ -33,5 +33,10 @@
     "gulp-zip": "^3.0.2",
     "run-sequence": "^1.1.2"
     <% } %>
+    <% if (CoffeScript)  { %>
+    ,"gulp-util": "^3.0.6"
+    ,"coffee-script": "^1.10.0"
+     <% } %>
+
   }
 }

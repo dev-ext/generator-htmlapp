@@ -34,6 +34,28 @@ gulp.task('mainjs:b', function(){
     .pipe(gulp.dest(config.d_compile_js));
 });
 
+// Main coffee script 
+gulp.task('maincoffee', function(){
+  return gulp.src(config.maincoffee)
+    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(jshint())
+    .pipe(jshint.reporter("jshint-stylish"))
+    .pipe(concat('main.js'))    
+    .pipe(gulp.dest(config.compile_maincoffe))
+});
+gulp.task('maincoffee:b', function(){
+  return gulp.src(config.maincoffee)
+    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(jshint())
+    .pipe(jshint.reporter("jshint-stylish"))
+    .pipe(concat('main.js'))    
+    .pipe(gulp.dest(config.d_compile_js))
+    .pipe(rename('main.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.d_compile_js));
+});
+
+
 // Vendor js
 gulp.task('vendorjs', function(){
   return gulp.src(config.vendor_js)
