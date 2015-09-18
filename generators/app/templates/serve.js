@@ -43,6 +43,7 @@ gulp.task('serve', ['styles','vendorStyles','headjs',
   // watch for changes
   gulp.watch([
     config.app+'/*.html',
+    config.app+'/*.tpl',
     config.app+'**/*.css',
     config.compile_js+'**/*.js',
     config.images+'**/*',
