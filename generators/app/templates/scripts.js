@@ -3,9 +3,9 @@ var $ = require('gulp-load-plugins')();
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify');<% if (js_pre_coffe)  { %>
 var coffee = require('gulp-coffee');
-var gutil = require('gulp-util');
+var gutil = require('gulp-util');<% } %>
 var config = require('./config.json');
 
 
