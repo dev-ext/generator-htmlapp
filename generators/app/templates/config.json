@@ -59,6 +59,8 @@
     "maincoffee": "app/scripts/main.coffee",<% } %>
     "styles_scss":"app/style.scss",
     "vendor_scss":"app/vendor.scss",
+    "styles_less":"app/style.less",
+    "vendor_less":"app/vendor.less",
 
     "u_mainjs" : "js/main.min.js",
     "u_vendorjs" : "js/vendor/vendor.min.js"

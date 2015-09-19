@@ -24,12 +24,36 @@ module.exports = yeoman.generators.Base.extend({
         name: 'Advanced task for theme sale',
         value: 'includePkg',
         checked: false
-      }, {
-        name: 'Create SCSS project structure',
-        value: 'includeSCSSpkg',
-        checked: false
       }]
     }, {
+      type: "list",
+      name: 'css_pre',
+      message: 'Select CSS preproccessor',
+      choices: [{
+        name: "None",
+        value: "css_pre_none"
+      }, {
+        name: "SCSS",
+        value: "css_pre_SCSS",
+        checked: true
+      },{
+        name: "LESS",
+        value: "css_pre_LESS"
+      }]
+    },
+    {
+       when: function (props) {
+        return props.css_pre.indexOf('css_pre_SCSS') !== -1;
+        },
+        type: 'checkbox',
+        name: 'SCSSpkg',
+        message: 'Use my SCSS project structure.',
+        choices: [{
+        name: "includeSCSSpkg",
+        value: "includeSCSSpkg"
+      }]
+    },
+     {
       type: "list",
       name: 'js_pre',
       message: 'Select Js preproccessor',
@@ -49,9 +73,30 @@ module.exports = yeoman.generators.Base.extend({
       }
       this.includeDoc = hasFeature('includeDoc');
       this.includePkg = hasFeature('includePkg');
-      this.includeSCSSpkg = hasFeature('includeSCSSpkg');
-      var js_pre = answers.js_pre;
+     
+      
+      var css_pre = answers.css_pre;
+      function cssFeature(feat) {
+        return css_pre.indexOf(feat) !== -1;
+      }
 
+      this.css_pre_none = cssFeature('css_pre_none');
+      this.css_pre_SCSS = cssFeature('css_pre_SCSS');
+      this.css_pre_LESS = cssFeature('css_pre_LESS');
+
+      var SCSSpkg = answers.SCSSpkg;
+      function hasSCSSpkg(feat) { return SCSSpkg.indexOf(feat) !== -1; }
+
+      if (this.css_pre_SCSS) {
+        this.includeSCSSpkg = hasSCSSpkg('includeSCSSpkg');
+      }else {
+        this.includeSCSSpkg = false;
+      }
+
+      
+    
+      var js_pre = answers.js_pre;
+      
       function jsFeature(feat) {
         return js_pre.indexOf(feat) !== -1;
       }
@@ -97,8 +142,12 @@ module.exports = yeoman.generators.Base.extend({
         js_pre_coffe: this.js_pre_coffe,
         js_pre_none: this.js_pre_none
       });
-      this.fs.copy(this.templatePath('styles.js'), 
-      this.destinationPath('tasks/styles.js'));
+      this.fs.copyTpl(this.templatePath('styles.js'), 
+      this.destinationPath('tasks/styles.js'),{
+        css_pre_none : this.css_pre_none, 
+        css_pre_SCSS : this.css_pre_SCSS,
+        css_pre_LESS : this.css_pre_LESS
+      });
       this.fs.copy(this.templatePath('utility.js'), 
       this.destinationPath('tasks/utility.js'));
       this.fs.copy(this.templatePath('readme.md'), 
@@ -127,10 +176,26 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath('app/footer.tpl'));
       this.fs.copy(this.templatePath('robots.txt'), 
       this.destinationPath('app/robots.txt'));
-      this.fs.copy(this.templatePath('style.scss'), 
-      this.destinationPath('app/style.scss'));
-      this.fs.copy(this.templatePath('vendor.scss'), 
-      this.destinationPath('app/vendor.scss'));
+
+      if (this.css_pre_SCSS) {
+       this.fs.copyTpl(this.templatePath('vendor.scss'), 
+       this.destinationPath('app/vendor.scss'), {
+         includeSCSSpkg: this.includeSCSSpkg
+       });
+       this.fs.copyTpl(this.templatePath('style.scss'), 
+       this.destinationPath('app/style.scss'), {
+         includeSCSSpkg: this.includeSCSSpkg
+       });
+      }
+
+      if (this.css_pre_LESS) {
+        this.fs.copy(this.templatePath('style.less'), 
+        this.destinationPath('app/style.less'));
+        this.fs.copy(this.templatePath('vendor.less'), 
+        this.destinationPath('app/vendor.less'));
+      }
+
+
     },
     SCSSpackage: function () {
       if (this.includeSCSSpkg) {
@@ -144,15 +209,7 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath('app/scss/mixin/_mixins.scss'));
         this.fs.copy(this.templatePath('_pages.scss'), 
       this.destinationPath('app/scss/pages/_pages.scss'));
-      }
-      this.fs.copyTpl(this.templatePath('vendor.scss'), 
-      this.destinationPath('app/vendor.scss'), {
-        includeSCSSpkg: this.includeSCSSpkg
-      });
-      this.fs.copyTpl(this.templatePath('style.scss'), 
-      this.destinationPath('app/style.scss'), {
-        includeSCSSpkg: this.includeSCSSpkg
-      });
+      }     
     },
     documentation: function () {
       if (this.includeDoc) {
@@ -176,11 +233,13 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath('tasks/serve.js'), {
         includePkg: this.includePkg,
         js_pre_coffe: this.js_pre_coffe,
-        js_pre_none: this.js_pre_none
+        js_pre_none: this.js_pre_none,
+        css_pre_SCSS : this.css_pre_SCSS,
+        css_pre_LESS : this.css_pre_LESS        
       });
     }
   },
   install: function () {
-    this.installDependencies();
+    //this.installDependencies();
   }
 });

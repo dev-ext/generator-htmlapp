@@ -44,11 +44,12 @@ gulp.task('serve', ['styles','vendorStyles','headjs',
   gulp.watch([
     config.app+'/*.html',
     config.app+'/*.tpl',
-    config.app+'**/*.css',
+    config.compile_styles+'**/*.css',
     config.compile_js+'**/*.js',
     config.images+'**/*',
-  ]).on('change', reload);
-  gulp.watch(config.app+'/**/*.scss', ['styles','vendorStyles']);<% if (js_pre_none)  { %>
+  ]).on('change', reload);<% if (css_pre_SCSS)  { %>
+  gulp.watch(config.app+'/**/*.scss', ['styles','vendorStyles']);<% } %><% if (css_pre_LESS)  { %>
+  gulp.watch(config.app+'/**/*.less', ['styles','vendorStyles']);<% } %><% if (js_pre_none)  { %>
   gulp.watch(config.scripts+'**/*.js', ['mainjs']);<% } %><% if (js_pre_coffe)  { %>
   gulp.watch(config.scripts+'**/*.coffee', ['maincoffee']);<% } %>
 });

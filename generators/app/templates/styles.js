@@ -8,15 +8,16 @@ var config = require('./config.json');
 
 // Style
 gulp.task('styles', function () {
-  gulp.src(config.styles_scss)
-    .pipe($.plumber())    
-    .pipe($.sourcemaps.init())
+  gulp.src(config.<% if (css_pre_SCSS)  { %>styles_scss<% } %><% if (css_pre_LESS)  { %>styles_less<% } %>)
+    .pipe($.plumber())<% if (css_pre_LESS)  { %>
+    .pipe($.less())<% } %>    
+    .pipe($.sourcemaps.init())<% if (css_pre_SCSS)  { %>
     .pipe($.sass({
-      outputStyle: 'nested', // libsass doesn't support expanded yet
+      outputStyle: 'nested',
       precision: 10,
       includePaths: ['.'],      
     }))
-    .on('error',console.log.bind(console, 'Sass error:')) //Error handling and 
+    .on('error',console.log.bind(console, 'Sass error:')) <% } %>
     .pipe($.postcss([
       require('autoprefixer-core')({browsers: ['last 2 version']})
     ]))
@@ -25,14 +26,16 @@ gulp.task('styles', function () {
 });
 
 gulp.task('styles:b', function () {
-  gulp.src(config.styles_scss)   
-    .pipe($.plumber()) 
+   gulp.src(config.<% if (css_pre_SCSS)  { %>styles_scss<% } %><% if (css_pre_LESS)  { %>styles_less<% } %>)
+    .pipe($.plumber())<% if (css_pre_LESS)  { %>
+    .pipe($.less())<% } %>    
+    .pipe($.sourcemaps.init())<% if (css_pre_SCSS)  { %>
     .pipe($.sass({
-      outputStyle: 'nested', // libsass doesn't support expanded yet
+      outputStyle: 'nested',
       precision: 10,
       includePaths: ['.'],      
     }))
-    .on('error',console.log.bind(console, 'Sass error:')) //Error handling and 
+    .on('error',console.log.bind(console, 'Sass error:')) <% } %>
     .pipe($.postcss([
       require('autoprefixer-core')({browsers: ['last 2 version']})
     ]))
@@ -44,15 +47,16 @@ gulp.task('styles:b', function () {
 
 // Vendor Style
 gulp.task('vendorStyles', function () {
-  gulp.src(config.vendor_scss)
-    .pipe($.plumber())    
-    .pipe($.sourcemaps.init())
+   gulp.src(config.<% if (css_pre_SCSS)  { %>vendor_scss<% } %><% if (css_pre_LESS)  { %>vendor_less<% } %>)
+    .pipe($.plumber())<% if (css_pre_LESS)  { %>
+    .pipe($.less())<% } %>    
+    .pipe($.sourcemaps.init())<% if (css_pre_SCSS)  { %>
     .pipe($.sass({
-      outputStyle: 'nested', // libsass doesn't support expanded yet
+      outputStyle: 'nested',
       precision: 10,
       includePaths: ['.'],      
     }))
-    .on('error',console.log.bind(console, 'Sass error:')) //Error handling and 
+    .on('error',console.log.bind(console, 'Sass error:')) <% } %>
     .pipe($.postcss([
       require('autoprefixer-core')({browsers: ['last 2 version']})
     ]))
@@ -61,14 +65,16 @@ gulp.task('vendorStyles', function () {
 });
 
 gulp.task('vendorStyles:b', function () {
-  gulp.src(config.vendor_scss) 
-    .pipe($.plumber())   
+  gulp.src(config.<% if (css_pre_SCSS)  { %>vendor_scss<% } %><% if (css_pre_LESS)  { %>vendor_less<% } %>)
+    .pipe($.plumber())<% if (css_pre_LESS)  { %>
+    .pipe($.less())<% } %>    
+    .pipe($.sourcemaps.init())<% if (css_pre_SCSS)  { %>
     .pipe($.sass({
-      outputStyle: 'nested', // libsass doesn't support expanded yet
+      outputStyle: 'nested',
       precision: 10,
       includePaths: ['.'],      
     }))
-    .on('error',console.log.bind(console, 'Sass error:')) //Error handling and 
+    .on('error',console.log.bind(console, 'Sass error:')) <% } %>
     .pipe($.postcss([
       require('autoprefixer-core')({browsers: ['last 2 version']})
     ]))
