@@ -107,8 +107,11 @@ module.exports = yeoman.generators.Base.extend({
   },
   writing: {
     app: function () {
-      this.fs.copy(this.templatePath('_bower.json'), 
-      this.destinationPath('bower.json'));
+      this.fs.copyTpl(this.templatePath('_bower.json'), 
+      this.destinationPath('bower.json'),{
+        css_pre_SCSS : this.css_pre_SCSS, 
+        css_pre_LESS : this.css_pre_LESS
+      });
     },
     stackfiles: function () {
       this.fs.copy(this.templatePath('editorconfig'), 
@@ -221,7 +224,9 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copyTpl(this.templatePath('_package.json'), 
       this.destinationPath('package.json'), {
         includePkg: this.includePkg,
-        js_pre_coffe: this.js_pre_coffe
+        js_pre_coffe: this.js_pre_coffe,
+        css_pre_SCSS : this.css_pre_SCSS, 
+        css_pre_LESS : this.css_pre_LESS
       });
       this.fs.copyTpl(this.templatePath('config.json'), 
       this.destinationPath('tasks/config.json'), {
@@ -240,6 +245,6 @@ module.exports = yeoman.generators.Base.extend({
     }
   },
   install: function () {
-    //this.installDependencies();
+    this.installDependencies();
   }
 });
