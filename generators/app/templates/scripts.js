@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');<% if (js_pre_coffe)  { %>
 var coffee = require('gulp-coffee');
 var gutil = require('gulp-util');<% } %>
 var config = require('./config.json');
+var asset = require('./tasks/asset.json');
 
 
 // Lint JS
@@ -61,14 +62,14 @@ gulp.task('maincoffee:b', function(){
 
 // Vendor js
 gulp.task('vendorjs', function(){
-  return gulp.src(config.vendor_js)
+  return gulp.src(asset.vendor_js)
     .pipe(jshint())
     .pipe(concat('vendor.js'))    
     .pipe(gulp.dest(config.compile_js_vendor))
 });
 
 gulp.task('vendorjs:b', function(){
-  return gulp.src(config.vendor_js)
+  return gulp.src(asset.vendor_js)
     .pipe(jshint())
     .pipe(concat('vendor.js'))    
     .pipe(gulp.dest(config.d_compile_js_vendor))
@@ -79,14 +80,14 @@ gulp.task('vendorjs:b', function(){
 
 // modernizr
 gulp.task('headjs', function(){
-  return gulp.src(config.headjs)  
+  return gulp.src(asset.headjs)  
     .pipe(concat('headscripts.js'))  
     .pipe(uglify())
     .pipe(gulp.dest(config.compile_js_vendor))
 });
 
 gulp.task('headjs:b', function(){
-  return gulp.src(config.headjs)   
+  return gulp.src(asset.headjs)   
     .pipe(concat('headscripts.js')) 
     .pipe(uglify())
     .pipe(gulp.dest(config.d_compile_js_vendor));

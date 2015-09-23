@@ -8,7 +8,6 @@
     "compile_js" :".tmp/js/",
     "compile_js_vendor" :".tmp/js/vendor/",
     "scripts" :"app/scripts/",
-    "bowerfont":["bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.*"],
     "fontpath" :".tmp/fonts/",
     "compile_styles":".tmp/",
     "compile_Vstyles":".tmp/",
@@ -45,16 +44,11 @@
     "p_h_compile_js" :"",
     "p_h_compile_js_vendor" :"",
 
-    <% } %>
+    <% } %> 
 
     "p_doc":"main/documentation/",
 
-    
-    "headjs": "bower_components/modernizr/modernizr.js",
-    "vendor_js": [
-        "bower_components/jquery/dist/jquery.js",
-        "bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"
-    ],<% if (js_pre_none)  { %>
+    <% if (js_pre_none)  { %>
     "mainjs": "app/scripts/main.js",<% } %><% if (js_pre_coffe)  { %>
     "maincoffee": "app/scripts/main.coffee",<% } %>
     "styles_scss":"app/style.scss",

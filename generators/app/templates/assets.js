@@ -4,6 +4,7 @@ var minifyHTML = require('gulp-minify-html');
 var fileinclude = require('gulp-file-include');
 var htmlreplace = require('gulp-html-replace');
 var config = require('./config.json');
+var asset = require('./tasks/asset.json');
 
 // HTML and  others Copy
 gulp.task('htmlcopy',function(){
@@ -37,12 +38,12 @@ gulp.task('htmlcopy:b',function(){
 });
 
 gulp.task('bowerfont',function(){
- return gulp.src(config.bowerfont)
+ return gulp.src(asset.bowerfont)
  .pipe(gulp.dest(config.fontpath))
 });
 
 gulp.task('bowerfont:b',function(){
- return gulp.src(config.bowerfont)
+ return gulp.src(asset.bowerfont)
  .pipe(gulp.dest(config.d_fontpath))
 });
 

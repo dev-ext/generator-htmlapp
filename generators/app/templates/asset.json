@@ -1,0 +1,8 @@
+{
+	"bowerfont":["bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.*"],
+	"headjs": "bower_components/modernizr/modernizr.js",
+	 "vendor_js": [
+        "bower_components/jquery/dist/jquery.js",
+        "bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"
+    ]
+}

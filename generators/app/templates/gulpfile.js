@@ -4,19 +4,12 @@ var browserSync = require('browser-sync');
 var $ = require('gulp-load-plugins')();
 var reload = browserSync.reload;
 var config = require('./tasks/config.json');
+var asset = require('./tasks/asset.json');
 var requireDir = require('require-dir');
 var tasks = requireDir('tasks/');
 
 
-gulp.task('build',['styles:b','vendorStyles:b',
-	<% if (js_pre_none)  { %>
-	'mainjs:b',
-	<% } %>
-	<% if (js_pre_coffe)  { %>
-	'maincoffee:b',
-	<% } %>
-	'headjs:b',
-  'vendorjs:b','images','extras','htmlcopy:b','bowerfont'],function(){
+gulp.task('build',['styles:b','vendorStyles:b',<% if (js_pre_none)  { %>'mainjs:b',<% } %><% if (js_pre_coffe)  { %>'maincoffee:b',<% } %>'headjs:b','vendorjs:b','images','extras','htmlcopy:b','bowerfont'],function(){
   return gulp.src(config.dist+'/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

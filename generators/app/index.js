@@ -228,6 +228,9 @@ module.exports = yeoman.generators.Base.extend({
         css_pre_SCSS : this.css_pre_SCSS, 
         css_pre_LESS : this.css_pre_LESS
       });
+      this.fs.copyTpl(this.templatePath('asset.json'), 
+      this.destinationPath('tasks/asset.json'));
+      
       this.fs.copyTpl(this.templatePath('config.json'), 
       this.destinationPath('tasks/config.json'), {
         includePkg: this.includePkg,
