@@ -15,7 +15,6 @@ gulp.task('lint', function() {
   return gulp.src(config.mainjs)
     .pipe(jshint())
     .pipe(jshint.reporter("jshint-stylish"))
-    .pipe(jshint.reporter('default'));
 });
 <% if (js_pre_none)  { %>
 // Main Js
