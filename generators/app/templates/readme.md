@@ -1,20 +1,27 @@
-## Pre installed dependencies ##
-Install Node : https://nodejs.org/
-Install Bower: `npm install --global bower` and `npm install --global gulp`
-Install git
+# generator-htmlapp 
 
-## Getting strated ##
- 1. Download the master version, extract it
- 2. Rename to project name
- 3. Then open terminal from project dir and run `npm install`, `bower install`. 
- 4. Run `gulp serve` to run your app
+### Documentation 
+Go to the doc folder for full task list and described it's usage purpose and how it works [doc](https://github.com/developer-prosenjit/generator-htmlapp/tree/master/doc)
 
-## Build Task ##
- 1. Run `gulp clean` for clean project dir
- 2. Run `gulp build`. This will generate production version into 'dist' folder with optimized version.
- 3.  After build `gulp serve:server` This will serve build server version.
- 4.  After build `gulp serve:client` This will serve build client version.
-## Build task Package ##
 
-## config ## 
-1. Config task variable, variables located at task/config.json
+## Quick Start
+ **Step: 1** Install yo
+```bash
+npm install -g yo
+```
+
+**Step: 2** install generator-htmlapp
+
+```bash
+npm install -g generator-htmlapp
+```
+
+**Step: 3** Finally, initiate the generator:
+
+```bash
+yo htmlapp
+```
+
+
+
+

@@ -1,35 +1,24 @@
-# generator-htmlapp [![Build Status](https://secure.travis-ci.org/developer-prosenjit/generator-htmlapp.png?branch=master)](https://travis-ci.org/developer-prosenjit/generator-htmlapp)
+# generator-htmlapp 
+
+### Documentation 
+Go to the doc folder for full task list and described it's usage purpose and how it works [doc](https://github.com/developer-prosenjit/generator-htmlapp/tree/master/doc)
 
 > [Yeoman](http://yeoman.io) generator
 
 
-## Getting Started
-
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
+## Quick Start
+ **Step: 1** Install yo
 ```bash
 npm install -g yo
 ```
 
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-htmlapp from npm, run:
+**Step: 2** install generator-htmlapp
 
 ```bash
 npm install -g generator-htmlapp
 ```
 
-Finally, initiate the generator:
+**Step: 3** Finally, initiate the generator:
 
 ```bash
 yo htmlapp
@@ -45,3 +34,5 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 ## License
 
 MIT
+
+
