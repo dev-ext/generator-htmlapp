@@ -19,7 +19,7 @@ gulp.task('styles', function () {
     }))
     .on('error',console.log.bind(console, 'Sass error:')) <% } %>
     .pipe($.postcss([
-      require('autoprefixer-core')({browsers: ['last 2 version']})
+      require('autoprefixer-core')({browsers: ['last 2 version','ie 9']})
     ]))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest(config.compile_styles))
@@ -37,7 +37,7 @@ gulp.task('styles:b', function () {
     }))
     .on('error',console.log.bind(console, 'Sass error:')) <% } %>
     .pipe($.postcss([
-      require('autoprefixer-core')({browsers: ['last 2 version']})
+      require('autoprefixer-core')({browsers: ['last 2 version','ie 9']})
     ]))
     .pipe(gulp.dest(config.d_styles))  
     .pipe(csso())    
@@ -58,7 +58,7 @@ gulp.task('vendorStyles', function () {
     }))
     .on('error',console.log.bind(console, 'Sass error:')) <% } %>
     .pipe($.postcss([
-      require('autoprefixer-core')({browsers: ['last 2 version']})
+      require('autoprefixer-core')({browsers: ['last 2 version','ie 9']})
     ]))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest(config.compile_Vstyles))
@@ -76,11 +76,10 @@ gulp.task('vendorStyles:b', function () {
     }))
     .on('error',console.log.bind(console, 'Sass error:')) <% } %>
     .pipe($.postcss([
-      require('autoprefixer-core')({browsers: ['last 2 version']})
+      require('autoprefixer-core')({browsers: ['last 2 version','ie 9']})
     ]))
     .pipe(gulp.dest(config.d_Vstyles))  
     .pipe(csso())    
     .pipe(rename('vendor.min.css'))
     .pipe(gulp.dest(config.d_Vstyles)); 
 });
-
