@@ -7,7 +7,7 @@ var uglify = require('gulp-uglify');<% if (js_pre_coffe)  { %>
 var coffee = require('gulp-coffee');
 var gutil = require('gulp-util');<% } %>
 var config = require('./config.json');
-var asset = require('./tasks/asset.json');
+var asset = require('./asset.json');
 
 
 // Lint JS
