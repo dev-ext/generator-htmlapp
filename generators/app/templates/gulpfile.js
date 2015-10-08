@@ -4,7 +4,6 @@ var browserSync = require('browser-sync');
 var $ = require('gulp-load-plugins')();
 var reload = browserSync.reload;
 var config = require('./tasks/config.json');
-var asset = require('./asset.json');
 var requireDir = require('require-dir');
 var tasks = requireDir('tasks/');
 
