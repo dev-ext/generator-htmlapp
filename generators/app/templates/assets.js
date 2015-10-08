@@ -4,7 +4,7 @@ var minifyHTML = require('gulp-minify-html');
 var fileinclude = require('gulp-file-include');
 var htmlreplace = require('gulp-html-replace');
 var config = require('./config.json');
-var asset = require('./tasks/asset.json');
+var asset = require('./asset.json');
 
 // HTML and  others Copy
 gulp.task('htmlcopy',function(){
