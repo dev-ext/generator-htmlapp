@@ -1,5 +1,5 @@
 ## Why this new generator
-This generator exist for solely fulfill my frontend automation. I have need few extra features that not exist in yeoman webapp.  
+This generator exists for solely fulfill my frontend automation. I have added few extra features which are not exist in yeoman webapp.  
 
 ## Features
 
