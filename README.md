@@ -1,7 +1,7 @@
 # generator-htmlapp 
 
 ### Documentation 
-Go to the doc folder for full task list and described it's usage purpose and how it works [doc](https://github.com/developer-prosenjit/generator-htmlapp/tree/master/doc)
+Go to the doc folder for its full task list. Here you can find the full description of its purpose of using and how it is actually working. [doc](https://github.com/developer-prosenjit/generator-htmlapp/tree/master/doc)
 
 > [Yeoman](http://yeoman.io) generator
 
