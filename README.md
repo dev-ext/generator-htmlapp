@@ -1,4 +1,5 @@
 # generator-htmlapp 
+Will not update. Curretly working with wordpress theme automation. Published soon
 
 ## Road Maps
 https://trello.com/b/ZqZj6Qcb/generator-htmlapp
