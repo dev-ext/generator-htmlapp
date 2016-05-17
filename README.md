@@ -1,5 +1,6 @@
 # generator-htmlapp 
-Will not update. Curretly working with wordpress theme automation. Published soon
+Will not update. Now working with wordpress theme automation. Published soon
+https://github.com/developer-prosenjit/wpautomate/wiki
 
 ## Road Maps
 https://trello.com/b/ZqZj6Qcb/generator-htmlapp
